@@ -1,5 +1,5 @@
-import express, { json } from "express";
-import { StatusIOApi } from "statusio";
+const express = require("express");
+const StatusIOApi = require("statusio").StatusIOApi;
 
 const STATUS_PAGE_ID = "61e1ea9b682d750536ef4cdb";
 const API_ID = "ec3f8349-df81-4197-ae41-f3f25cdf92d8";
@@ -7,7 +7,7 @@ const API_KEY =
   "va5GXvxil59PgLURe5Ew+zEQrgbcRyZ4+HXFmec27KqfWbkAwa+VWmNXdSlcCJT37H1WzEi9+WU+BqQIcl15Zg==";
 
 const app = express();
-app.use(json()); // Use express.json() instead of bodyParser
+app.use(express.json()); // Use express.json() instead of bodyParser
 
 const api = new StatusIOApi(
   "ec3f8349-df81-4197-ae41-f3f25cdf92d8",
@@ -51,4 +51,4 @@ app.listen(PORT, () => {
 });
 
 // Export the app for Vercel
-export default app;
+module.exports = app;
